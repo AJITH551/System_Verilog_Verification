@@ -1,8 +1,15 @@
-module d_ff (input clk,d,output reg q);
-
-always@(posedge clk)
-begin
-q<=d;
-end
-
+module d_ff(
+  input logic clk,
+  input logic reset,
+  input logic d,
+  output logic q
+);
+  
+  always_ff@(posedge clk) begin
+    if(reset)
+      q <= 0;
+    else
+      q <= d;
+  end
+  
 endmodule
